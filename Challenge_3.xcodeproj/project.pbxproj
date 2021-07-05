@@ -296,6 +296,9 @@
 				DEVELOPMENT_TEAM = 9T65XWHQL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Challenge_3/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = Challenge_3;
+				INFOPLIST_KEY_CFBundleName = Challenge_3;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -305,7 +308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.MrMurmanProd.Challenge-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -324,6 +327,9 @@
 				DEVELOPMENT_TEAM = 9T65XWHQL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Challenge_3/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = Challenge_3;
+				INFOPLIST_KEY_CFBundleName = Challenge_3;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -333,7 +339,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.MrMurmanProd.Challenge-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

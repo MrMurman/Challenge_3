@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.5"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="U6W-IH-gag">
-                                <rect key="frame" x="87" y="384" width="240" height="400"/>
+                                <rect key="frame" x="87" y="432" width="240" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="KE1-29-otV"/>
@@ -27,23 +28,47 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Was-si-Vit"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Used letters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwC-Oq-rdO">
-                                <rect key="frame" x="87" y="355" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Used letters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwC-Oq-rdO">
+                                <rect key="frame" x="87" y="391" width="97" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="19s-IC-TsG">
+                                <rect key="frame" x="87" y="88" width="240" height="283"/>
+                                <imageReference key="image" image="Tree 7"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-lc-xnB">
+                                <rect key="frame" x="242" y="384" width="85" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Give Up" cornerStyle="large"/>
+                                <connections>
+                                    <action selector="giveUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bM-fc-DIa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kjJ-lc-xnB" firstAttribute="top" secondItem="19s-IC-TsG" secondAttribute="bottom" constant="13" id="6ql-sA-yQL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U6W-IH-gag" secondAttribute="bottom" constant="20" id="98N-z6-rEj"/>
+                            <constraint firstItem="U6W-IH-gag" firstAttribute="top" secondItem="kjJ-lc-xnB" secondAttribute="bottom" constant="13" id="9L1-oP-aWJ"/>
+                            <constraint firstItem="19s-IC-TsG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FsP-v6-weh"/>
+                            <constraint firstItem="U6W-IH-gag" firstAttribute="top" secondItem="wwC-Oq-rdO" secondAttribute="bottom" constant="20" id="OJk-tF-3aT"/>
                             <constraint firstItem="U6W-IH-gag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OW4-fI-KNN"/>
-                            <constraint firstItem="U6W-IH-gag" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="296" id="cKy-1j-gWR"/>
+                            <constraint firstItem="19s-IC-TsG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="R4g-fN-Dae"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="19s-IC-TsG" secondAttribute="trailing" constant="87" id="Sjw-zm-j1v"/>
+                            <constraint firstItem="19s-IC-TsG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="apA-Tn-QEA"/>
+                            <constraint firstItem="wwC-Oq-rdO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="azN-HP-PYC"/>
+                            <constraint firstItem="U6W-IH-gag" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="344" id="cKy-1j-gWR"/>
+                            <constraint firstItem="19s-IC-TsG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jhw-qz-5yH"/>
+                            <constraint firstItem="kjJ-lc-xnB" firstAttribute="leading" secondItem="wwC-Oq-rdO" secondAttribute="trailing" constant="58" id="mMQ-Ee-qnL"/>
+                            <constraint firstItem="wwC-Oq-rdO" firstAttribute="top" secondItem="19s-IC-TsG" secondAttribute="bottom" constant="20" id="zv0-XI-c5S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CIc-dA-j6s"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="CIc-dA-j6s"/>
                     <connections>
+                        <outlet property="imageView" destination="19s-IC-TsG" id="y2L-GH-Yrt"/>
                         <outlet property="usedCharsTableView" destination="U6W-IH-gag" id="Mia-kA-Nyk"/>
                     </connections>
                 </viewController>
@@ -71,6 +96,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Tree 7" width="600" height="945"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

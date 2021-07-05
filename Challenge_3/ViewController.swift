@@ -9,11 +9,34 @@ import UIKit
 
 enum AlertType {
     case notCharacter, gameOver, notOriginal
+    
+    var errorTitle: String{
+        switch self {
+        case .notCharacter:
+            return "That is not a character"
+        case .gameOver:
+            return "Game over"
+        case .notOriginal:
+            return "Please enter a new letter"
+        }
+    }
+    
+    var errorMessage: String? {
+        switch self {
+        case .notCharacter:
+            return "Please enter 1 letter"
+        case .gameOver:
+            return "Would you like to start over?"
+        case .notOriginal:
+            return "That character has already been used"
+        }
+    }
 }
 
 class ViewController: UIViewController {
 
     @IBOutlet var usedCharsTableView: UITableView!
+    @IBOutlet var imageView: UIImageView!
     
 
     var secretWords: [String] = []
@@ -46,6 +69,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(checkCharacter))
+        
         usedCharsTableView.layer.borderWidth = 2
         usedCharsTableView.layer.cornerRadius = 7
         usedCharsTableView.layer.shadowOffset = CGSize(width: 4, height: 5)
@@ -100,31 +124,26 @@ class ViewController: UIViewController {
 
     func showAlert(_ type: AlertType) {
         
+        let ac = UIAlertController(title: type.errorTitle, message: type.errorMessage, preferredStyle: .alert)
+        let alertAction: UIAlertAction
+        
         switch type {
-        case .notCharacter:
-            let ac = UIAlertController(title: "That is not a character", message: "Please enter 1 letter", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-            present(ac, animated: true)
+        case .notCharacter, .notOriginal:
+            alertAction = UIAlertAction(title: "Try again", style: .default, handler: nil)
             
         case .gameOver:
-            let ac = UIAlertController(title: "Game over", message: "Would you like to start over?", preferredStyle: .alert)
-            let restartGameAction = UIAlertAction(title: "Start New Game", style: .default) { [weak self] _ in
+            alertAction = UIAlertAction(title: "Start New Game", style: .default) { [weak self] _ in
                 self?.performSelector(inBackground: #selector(self?.startNewGame), with: nil)
             }
-            ac.addAction(restartGameAction)
-            present(ac, animated: true)
-            
-        case .notOriginal:
-            let ac = UIAlertController(title: "Please enter a new letter", message: "That character has already been used", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-            present(ac, animated: true)
         }
+        ac.addAction(alertAction)
+        present(ac, animated: true)
 
     }
-    //add an alert that states that a letter entered is not a Char or has already been used
-    //add an alert that states that game is over, would you like another round?
+
     
    @objc func updateUI() {
+        imageView.image = UIImage(named: "Tree \(countDown)")
         title = shownWord.joined(separator: " ") + " - Remaining attempts: \(countDown)"
         usedCharsTableView.reloadData()
        
@@ -133,7 +152,6 @@ class ViewController: UIViewController {
     
     
     @objc func loadWords() {
-        // Do any additional setup after loading the view.
         
         if let starWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt"){
             if let startWords = try? String(contentsOf: starWordsURL) {
@@ -162,6 +180,10 @@ class ViewController: UIViewController {
         
         performSelector(onMainThread: #selector(updateUI), with: nil, waitUntilDone: false)
     }
+    @IBAction func giveUpButton(_ sender: UIButton) {
+        showAlert(.gameOver)
+    }
+    
 }
 
 
