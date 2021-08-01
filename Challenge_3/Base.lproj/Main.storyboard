@@ -46,7 +46,7 @@
                                     <action selector="giveUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bM-fc-DIa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-j3-AXn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-j3-AXn">
                                 <rect key="frame" x="349" y="615" width="47" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -74,6 +74,11 @@
                             <constraint firstItem="kjJ-lc-xnB" firstAttribute="leading" secondItem="wwC-Oq-rdO" secondAttribute="trailing" constant="58" id="mMQ-Ee-qnL"/>
                             <constraint firstItem="wwC-Oq-rdO" firstAttribute="top" secondItem="19s-IC-TsG" secondAttribute="bottom" constant="20" id="zv0-XI-c5S"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="KJf-j3-AXn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="CIc-dA-j6s"/>
                     <connections>

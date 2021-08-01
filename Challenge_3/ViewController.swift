@@ -56,13 +56,15 @@ class ViewController: UIViewController {
     var usedLetters: [Character] = []
     var triedLetters: [Character] = []
     
-    var countDown = 7 {
+    var countUP = 0 {
         didSet {
-            if countDown == 0 {
+            if countUP == 7 {
                 showAlert(.gameOver)
             }
         }
     }
+    
+    var countDown = 7
     
     
     
@@ -80,7 +82,7 @@ class ViewController: UIViewController {
             self.startNewGame()
         }
         
-        setupApples()
+      setupApples()
 
     }
 
@@ -114,10 +116,12 @@ class ViewController: UIViewController {
                 
             }
             if !shownWord.contains(character) {
+                dropApple(index: countUP, letter: character)
                 countDown -= 1
+                countUP += 1
             }
             updateUI()
-            print(countDown, "", triedLetters)
+            print(countUP, "", triedLetters)
         }
         
         ac.addAction(checkCharacterAction)
@@ -136,6 +140,7 @@ class ViewController: UIViewController {
         case .gameOver:
             alertAction = UIAlertAction(title: "Start New Game", style: .default) { [weak self] _ in
                 self?.performSelector(inBackground: #selector(self?.startNewGame), with: nil)
+                self?.resetApples()
             }
         }
         ac.addAction(alertAction)
@@ -145,7 +150,7 @@ class ViewController: UIViewController {
 
     
    @objc func updateUI() {
-        imageView.image = UIImage(named: "Tree \(countDown)")
+        imageView.image = UIImage(named: "Tree 0")
         title = shownWord.joined(separator: " ") + " - Remaining attempts: \(countDown)"
         usedCharsTableView.reloadData()
        
@@ -170,6 +175,7 @@ class ViewController: UIViewController {
     @objc func startNewGame() {
         var secretWordsShuffled = secretWords.shuffled()
         chosenWord = secretWordsShuffled.removeFirst().uppercased()
+        countUP = 0
         countDown = 7
         triedLetters.removeAll()
         shownWord.removeAll()
@@ -206,33 +212,18 @@ class ViewController: UIViewController {
         
 //        let appleOne = UIImageView(image: UIImage(named: "apple"))
 //        appleOne.frame = CGRect(x: 0, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleTwo = UIImageView(image: UIImage(named: "apple"))
-//        appleTwo.frame = CGRect(x: 45, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleThree = UIImageView(image: UIImage(named: "apple"))
-//        appleThree.frame = CGRect(x: 90, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleFour = UIImageView(image: UIImage(named: "apple"))
-//        appleFour.frame = CGRect(x: 135, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleFive = UIImageView(image: UIImage(named: "apple"))
-//        appleFive.frame = CGRect(x: 180, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleSix = UIImageView(image: UIImage(named: "apple"))
-//        appleSix.frame = CGRect(x: 215, y: 75, width: 155/2.5, height: 132/2.5)
-//        let appleSeven = UIImageView(image: UIImage(named: "apple"))
-//        appleSeven.frame = CGRect(x: 260, y: 75, width: 155/2.5, height: 132/2.5)
-//
-        
-//        imageView.addSubview(appleOne)
-//        imageView.addSubview(appleTwo)
-//        imageView.addSubview(appleThree)
-//        imageView.addSubview(appleFour)
-//        imageView.addSubview(appleFive)
-//        imageView.addSubview(appleSix)
-//        imageView.addSubview(appleSeven)
         
     }
     
+    func resetApples() {
+        imageView.subviews.forEach({$0.removeFromSuperview()})
+        setupApples()
+    }
     func dropApple(index: Int, letter: String) {
+        let yCoordinate = imageView.frame.maxY-140
         UIView.animate(withDuration: 1, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []) { [self] in
-            imageView.subviews[index].transform = CGAffineTransform(translationX: 0, y: 165)
+            imageView.subviews[index].frame.origin.y = yCoordinate
+
         } completion: { [self] _ in
             
             let letterLayer = CATextLayer()
@@ -245,6 +236,10 @@ class ViewController: UIViewController {
         }
 
     }
+    
+    
+    
+    
     
     let lettersArray: [String] = ["A", "B", "C", "D", "E", "F", "X", "Y"]
     var buttonCount = 0
