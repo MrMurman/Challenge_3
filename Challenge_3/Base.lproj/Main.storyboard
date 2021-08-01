@@ -36,7 +36,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="19s-IC-TsG">
                                 <rect key="frame" x="66" y="88" width="282" height="283"/>
-                                <imageReference key="image" image="Tree 7"/>
+                                <imageReference key="image" image="Tree 0"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjJ-lc-xnB">
                                 <rect key="frame" x="242" y="384" width="85" height="35"/>
@@ -44,6 +44,15 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Give Up" cornerStyle="large"/>
                                 <connections>
                                     <action selector="giveUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3bM-fc-DIa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-j3-AXn">
+                                <rect key="frame" x="349" y="615" width="47" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="⬇️"/>
+                                <connections>
+                                    <action selector="dropActionBTN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ysg-QT-1bo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,7 +105,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tree 7" width="3261" height="3270"/>
+        <image name="Tree 0" width="3261" height="3270"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

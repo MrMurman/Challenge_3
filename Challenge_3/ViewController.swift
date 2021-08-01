@@ -79,6 +79,8 @@ class ViewController: UIViewController {
             self.loadWords()
             self.startNewGame()
         }
+        
+        setupApples()
 
     }
 
@@ -183,6 +185,77 @@ class ViewController: UIViewController {
     @IBAction func giveUpButton(_ sender: UIButton) {
         showAlert(.gameOver)
     }
+    
+    func setupApples() {
+        imageView.clipsToBounds = false
+        
+        
+        var appleArray: [UIImageView] = []
+        var xCoordinate: Double = -15
+        let yCoordinate: [Double] = [75, 170, 50, 120, 10, 150, 60]
+        
+        for index in 0...6 {
+            
+            let apple = UIImageView(image: UIImage(named: "apple"))
+            apple.frame = CGRect(x: xCoordinate, y: yCoordinate[index], width: 155/2.5, height: 132/2.5)
+            xCoordinate += 38
+            
+            appleArray.append(apple)
+            imageView.addSubview(apple)
+        }
+        
+//        let appleOne = UIImageView(image: UIImage(named: "apple"))
+//        appleOne.frame = CGRect(x: 0, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleTwo = UIImageView(image: UIImage(named: "apple"))
+//        appleTwo.frame = CGRect(x: 45, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleThree = UIImageView(image: UIImage(named: "apple"))
+//        appleThree.frame = CGRect(x: 90, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleFour = UIImageView(image: UIImage(named: "apple"))
+//        appleFour.frame = CGRect(x: 135, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleFive = UIImageView(image: UIImage(named: "apple"))
+//        appleFive.frame = CGRect(x: 180, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleSix = UIImageView(image: UIImage(named: "apple"))
+//        appleSix.frame = CGRect(x: 215, y: 75, width: 155/2.5, height: 132/2.5)
+//        let appleSeven = UIImageView(image: UIImage(named: "apple"))
+//        appleSeven.frame = CGRect(x: 260, y: 75, width: 155/2.5, height: 132/2.5)
+//
+        
+//        imageView.addSubview(appleOne)
+//        imageView.addSubview(appleTwo)
+//        imageView.addSubview(appleThree)
+//        imageView.addSubview(appleFour)
+//        imageView.addSubview(appleFive)
+//        imageView.addSubview(appleSix)
+//        imageView.addSubview(appleSeven)
+        
+    }
+    
+    func dropApple(index: Int, letter: String) {
+        UIView.animate(withDuration: 1, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []) { [self] in
+            imageView.subviews[index].transform = CGAffineTransform(translationX: 0, y: 165)
+        } completion: { [self] _ in
+            
+            let letterLayer = CATextLayer()
+            letterLayer.frame = CGRect(x: 20, y: 10, width: 155/2.5, height: 132/2.5)
+            letterLayer.string = letter
+            letterLayer.fontSize = 30
+            letterLayer.foregroundColor = UIColor.white.cgColor
+            imageView.subviews[index].layer.addSublayer(letterLayer)
+            return
+        }
+
+    }
+    
+    let lettersArray: [String] = ["A", "B", "C", "D", "E", "F", "X", "Y"]
+    var buttonCount = 0
+    
+    @IBAction func dropActionBTN(_ sender: UIButton) {
+        dropApple(index: buttonCount, letter: lettersArray[buttonCount])
+        buttonCount += 1
+        
+        
+    }
+    
     
 }
 
